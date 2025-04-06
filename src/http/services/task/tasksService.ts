@@ -41,6 +41,12 @@ export class TasksService {
   }
 
   deleteTask = async (id: string): Promise<boolean> => {
+    const taskIsOnDatabase = await this.tasksRepository.findTask(id)
+
+    if (!taskIsOnDatabase) {
+      return false
+    }
+
     const deletetTask = await this.tasksRepository.deleteTask(id)
     return deletetTask
   }

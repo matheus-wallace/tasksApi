@@ -21,25 +21,22 @@ export class PrismaTasksRepository implements TasksRepository {
   }
 
   async deleteTask(id: string): Promise<boolean> {
-    try {
-      const taskIsOnDatabase = await prisma.task.findFirst({
-        where: {
-          id,
-        },
-      })
-      if (!taskIsOnDatabase) {
-        return false
-      }
-      await prisma.task.delete({
-        where: {
-          id,
-        },
-      })
-      return true
-    } catch (error) {
-      console.log(error)
-      throw error
-    }
+    await prisma.task.delete({
+      where: {
+        id,
+      },
+    })
+    return true
+  }
+
+  async findTask(id: string): Promise<boolean> {
+    const task = await prisma.task.findUnique({
+      where: {
+        id,
+      },
+    })
+
+    return !!task
   }
 
   async createTask(data: Prisma.TaskCreateInput) {

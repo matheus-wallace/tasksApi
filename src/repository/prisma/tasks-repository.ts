@@ -6,4 +6,5 @@ export interface TasksRepository {
   getTasks: () => Promise<Task[]>
   updateTask: (id: string, data: UpdateTaskParams) => Promise<Task>
   deleteTask: (id: string) => Promise<boolean>
+  findTask: (id: string) => Promise<boolean>
 }
