@@ -7,3 +7,8 @@ services:
       - POSTGRESQL_USERNAME=${LOCAL_USER}
       - POSTGRESQL_PASSWORD=${LOCAL_PASSWORD}
       - POSTGRESQL_DATABASE=${LOCAL_DATABASE}
+    volumes:
+      - postgres_data:/bitnami/postgresql
+    restart: unless-stopped
+volumes:
+  postgres_data:
