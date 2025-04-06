@@ -7,7 +7,13 @@
     "start": "node build/server.js",
     "test": "vitest run",
     "test:watch": "vitest",
-    "build": "tsup src --out-dir build"
+    "build": "tsup src --out-dir build",
+    "migrate": "prisma migrate dev",
+    "generate": "prisma generate",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "keywords": [],
   "author": "",
